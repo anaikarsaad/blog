@@ -9,18 +9,18 @@ import { ConfigService } from '@nestjs/config';
 import { AuthService } from 'src/auth/auth.service';
 @Module({
   imports:[
-    // PassportModule.register({defaultStrategy:'jwt'}),
-    // JwtModule.registerAsync({
-    //   inject:[ConfigService],
-    //   useFactory:(config:ConfigService)=>{
-    //     return{
-    //       secret:config.get<string>('JWT_SECRET'),
-    //       signOptions:{
-    //         expiresIn:config.get<string|number>('JWT_Expires'),
-    //       }
-    //     }
-    //   }
-    // }),
+    PassportModule.register({defaultStrategy:'jwt'}),
+    JwtModule.registerAsync({
+      inject:[ConfigService],
+      useFactory:(config:ConfigService)=>{
+        return{
+          secret:config.get<string>('JWT_SECRET'),
+          signOptions:{
+            expiresIn:config.get<string|number>('JWT_EXPIRES'),
+          }
+        }
+      }
+    }),
     MongooseModule.forFeature([{name:'user',schema:userSchema}])],
   controllers: [UserController],
   providers: [UserService],

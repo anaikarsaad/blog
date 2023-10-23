@@ -8,6 +8,8 @@ import { UserService } from './user/user.service';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { AuthService } from './auth/auth.service';
+import { BlogModule } from './blog/blog.module';
+import { CommentModule } from './comment/comment.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -16,7 +18,9 @@ import { AuthService } from './auth/auth.service';
     }),
     MongooseModule.forRoot(process.env.MONGODB_URL),
     AuthModule,
-    UserModule],
+    UserModule,
+    BlogModule,
+    CommentModule],
   controllers: [AppController],
   providers: [],
 })

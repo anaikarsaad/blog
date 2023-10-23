@@ -1,8 +1,9 @@
-import { Controller, Post ,Body} from '@nestjs/common';
+import { Controller, Post ,Body, Get} from '@nestjs/common';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
 
 import { UserDto } from 'src/user/Dto/user.dto';
 import { AuthService } from './auth.service';
+import { LoginAuthDto } from './Dto/login.dto';
 @ApiTags("Authentication")
 @Controller('auth')
 export class AuthController {
@@ -14,8 +15,15 @@ export class AuthController {
 
     @ApiProperty()
     @Post('/register')
-    register(@Body() userDto:UserDto):Promise<UserDto>{
+    register(@Body() userDto:UserDto):Promise<{token:string}>{
         return this.authService.register(userDto);
+    }
+
+
+    @ApiProperty()
+    @Post('login')
+    login(@Body() loginDto:LoginAuthDto){
+        return this.authService.login(loginDto);
     }
    
 }
