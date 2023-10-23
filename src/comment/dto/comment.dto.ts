@@ -5,11 +5,9 @@ import mongoose from "mongoose";
 import { user } from "src/user/schema/user.schema";
 import { Type } from 'class-transformer';
 import { blog } from "src/blog/schema/blog.schema";
-@Schema({
-    timestamps:true
-})
-export class comment{
-    
+
+export class commentDto{
+
     @ApiProperty()
     @IsNotEmpty()
     @Prop({required:true})
@@ -24,7 +22,7 @@ export class comment{
     @ApiProperty()
     @IsNotEmpty()
     @Prop({required:true,type:mongoose.Schema.Types.ObjectId,ref:blog.name})
-    @Type(()=>blog)
+    @Type(()=>user)
     blog:blog;
 
     @ApiProperty()
@@ -32,6 +30,3 @@ export class comment{
     @Prop({required:true})
     tags:string[];
 }
-
-
-export const commentSchema=SchemaFactory.createForClass(comment);
