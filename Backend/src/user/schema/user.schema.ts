@@ -26,7 +26,7 @@ export class user{
 
     @ApiProperty()
     @IsNotEmpty()
-    @Prop({required:true})
+    @Prop()
     date:Date;
 }
 

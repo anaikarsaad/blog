@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { AuthService } from './auth/auth.service';
 import { BlogModule } from './blog/blog.module';
 import { CommentModule } from './comment/comment.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -17,6 +18,7 @@ import { CommentModule } from './comment/comment.module';
       isGlobal:true
     }),
     MongooseModule.forRoot(process.env.MONGODB_URL),
+    
     AuthModule,
     UserModule,
     BlogModule,
