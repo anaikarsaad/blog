@@ -25,8 +25,5 @@ export class commentDto{
     @Type(()=>user)
     blog:blog;
 
-    @ApiProperty()
-    @IsNotEmpty()
-    @Prop({required:true})
-    tags:string[];
+   
 }

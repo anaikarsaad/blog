@@ -27,10 +27,7 @@ export class comment{
     @Type(()=>blog)
     blog:blog;
 
-    @ApiProperty()
-    @IsNotEmpty()
-    @Prop({required:true})
-    tags:string[];
+   
 }
 
 
